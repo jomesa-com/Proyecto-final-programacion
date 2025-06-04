@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.AmbientLight?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" centerShape="false" prefHeight="670.0" prefWidth="378.0" style="-fx-background-color: F1F1F1;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="Vista.ControladorLogin">
+   <children>
+      <ImageView fitHeight="256.0" fitWidth="385.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Imagenes/WhatsApp%20Image%202025-05-28%20at%2010.24.10%20PM.jpeg" />
+         </image>
+      </ImageView>
+      <Label layoutX="14.0" layoutY="280.0" text="Iniciar Sesión">
+         <font>
+            <Font name="Serif Bold" size="24.0" />
+         </font>
+      </Label>
+      <TextField layoutX="14.0" layoutY="349.0" prefHeight="26.0" prefWidth="209.0" style="-fx-background-color: 45453E; -fx-border-color: 000000; -fx cursor: text">
+      </TextField>
+      <AmbientLight lightOn="true">
+         <color>
+            <Color fx:value="#45453E" />
+         </color>
+      </AmbientLight>
+   </children>
+</AnchorPane>
