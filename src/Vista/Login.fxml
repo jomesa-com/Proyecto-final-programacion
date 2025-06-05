@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.AmbientLight?>
-<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -10,8 +11,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" centerShape="false" prefHeight="670.0" prefWidth="378.0" style="-fx-background-color: F1F1F1;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="Vista.ControladorLogin">
+<AnchorPane id="AnchorPane" centerShape="false" prefHeight="694.0" prefWidth="384.0" style="-fx-background-color: #F1F1F1;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vista.ControladorLogin">
    <children>
       <ImageView fitHeight="256.0" fitWidth="385.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -23,12 +23,34 @@
             <Font name="Serif Bold" size="24.0" />
          </font>
       </Label>
-      <TextField layoutX="14.0" layoutY="349.0" prefHeight="26.0" prefWidth="209.0" style="-fx-background-color: 45453E; -fx-border-color: 000000; -fx cursor: text">
+      <TextField id="txtCorreo" fx:id="txtCorreo" layoutX="51.2" layoutY="399.2" prefHeight="34.0" prefWidth="278.0" style="-fx-background-color: #a29c9b; -fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #000000; -fx cursor: text;" AnchorPane.leftAnchor="51.0" AnchorPane.topAnchor="399.0">
       </TextField>
       <AmbientLight lightOn="true">
          <color>
             <Color fx:value="#45453E" />
          </color>
       </AmbientLight>
+      <Label layoutX="14.0" layoutY="318.0" text="Inicia sesión con tu cuenta">
+         <font>
+            <Font name="MS Reference Sans Serif" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="364.0" text="Email:">
+         <font>
+            <Font name="SansSerif Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="448.0" text="Contraseña:">
+         <font>
+            <Font name="SansSerif Bold" size="13.0" />
+         </font>
+      </Label>
+      <PasswordField id="txtContraseña" fx:id="txtContraseña" layoutX="51.0" layoutY="480.0" prefHeight="34.0" prefWidth="278.0" style="-fx-border-color: #000000; -fx-border-radius: 8; -fx-background-radius: 8; -fx-background-color: #a29c9b;" />
+      <Button id="btnIniciar" fx:id="btnIniciar" layoutX="110.0" layoutY="560.0" mnemonicParsing="false" onAction="#handleIniciar" prefHeight="34.0" prefWidth="162.0" style="-fx-background-color: #000000; -fx-cursor: hand; -fx-border-radius: 8; -fx-background-radius: 8;" text="Iniciar Sesión" textFill="WHITE" />
+      <Label fx:id="lblCrearCuenta" layoutX="87.0" layoutY="633.0" onMouseClicked="#handleIrARegistro" style="-fx-cursor: hand;" text="No tienes una cuenta? Créala aquí" textOverrun="WORD_ELLIPSIS" underline="true">
+         <font>
+            <Font name="MS Reference Sans Serif" size="12.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
