@@ -4,178 +4,88 @@
  */
 package Vista;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import Modelo.Producto;
+import Modelo.ListaCatalogo;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.TilePane;
+import javafx.scene.layout.VBox;
+import javafx.scene.image.Image;
+import javafx.scene.control.Button;
+import javafx.geometry.Pos;
+import javafx.scene.text.Font;
 
-public class CatalogoController {
+import java.net.URL;
+import java.util.ResourceBundle;
+import javafx.scene.control.ScrollPane;
 
-    @FXML private TableView<Producto> tblProductos;
-    @FXML private TableColumn<Producto, String> colCodigo;
-    @FXML private TableColumn<Producto, String> colNombre;
-    @FXML private TableColumn<Producto, String> colTalla;
-    @FXML private TableColumn<Producto, String> colColor;
-    @FXML private TableColumn<Producto, Double> colPrecio;
-    @FXML private TableColumn<Producto, Integer> colStock;
+public class CatalogoController implements Initializable {
 
-
-    @FXML private TextField txtCodigo;
-    @FXML private TextField txtNombre;
-    @FXML private ComboBox<String> cmbTalla;
-    @FXML private TextField txtColor;
-    @FXML private TextField txtPrecio;
-    @FXML private TextField txtStock;
-
-
-    @FXML private TextField txtBusqueda;
-    @FXML private ComboBox<String> cmbCategoria;
-
-
-    @FXML private Button btnBuscar;
-    @FXML private Button btnAgregar;
-    @FXML private Button btnEditar;
-    @FXML private Button btnEliminar;
-
-    private final ObservableList<Producto> listaProductos = FXCollections.observableArrayList();
-    private final ObservableList<Producto> listaFiltrada = FXCollections.observableArrayList();
-
-    @FXML
-    public void initialize() {
+    @FXML private TilePane contenedorProductos;
+    @FXML private Button btnTodos;
+    @FXML private Button btnHombres;
+    @FXML private Button btnMujeres;
+    @FXML private Button btnInfantil;
+    @FXML private ScrollPane scrollCatalogo;
     
-        cmbCategoria.getItems().setAll("Todos", "Hombres", "Mujeres", "Niños", "Accesorios");
-        cmbCategoria.setValue("Todos");
-        
-        cmbTalla.getItems().setAll("S", "M", "L", "XL");
-        cmbTalla.setValue("M");
 
- 
-        colCodigo.setCellValueFactory(new PropertyValueFactory<>("codigo"));
-        colNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
-        colTalla.setCellValueFactory(new PropertyValueFactory<>("talla"));
-        colColor.setCellValueFactory(new PropertyValueFactory<>("color"));
-        colPrecio.setCellValueFactory(new PropertyValueFactory<>("precio"));
-        colStock.setCellValueFactory(new PropertyValueFactory<>("stock"));
-
-         listaFiltrada.setAll(listaProductos);
-        tblProductos.setItems(listaFiltrada);
-
-       
-        tblProductos.getSelectionModel().selectedItemProperty().addListener((obs, oldSel, newSel) -> {
-            if (newSel != null) {
-                txtCodigo.setText(newSel.getCodigo());
-                txtNombre.setText(newSel.getNombre());
-                cmbTalla.setValue(newSel.getTalla());
-                txtColor.setText(newSel.getColor());
-                txtPrecio.setText(String.valueOf(newSel.getPrecio()));
-                txtStock.setText(String.valueOf(newSel.getStock()));
-            }
-        });
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        cargarProductos("Todos");
     }
 
-    @FXML
-    private void onBuscarClicked(ActionEvent event) {
-        String texto = txtBusqueda.getText().trim().toLowerCase();
-        String categoria = cmbCategoria.getValue();
-        listaFiltrada.clear();
-        for (Producto p : listaProductos) {
-            boolean coincideTexto = p.getNombre().toLowerCase().contains(texto) || p.getCodigo().toLowerCase().contains(texto);
-            boolean coincideCategoria = categoria.equals("Todos") || p.getCategoria().equalsIgnoreCase(categoria);
-            if (coincideTexto && coincideCategoria) {
-                listaFiltrada.add(p);
+    private void cargarProductos(String filtroCategoria) {
+        contenedorProductos.getChildren().clear();
+        for (Producto producto : ListaCatalogo.getProductos()) {
+            if (filtroCategoria.equals("Todos") || producto.getCategoria().equalsIgnoreCase(filtroCategoria)) {
+                VBox tarjeta = crearTarjetaProducto(producto);
+                contenedorProductos.getChildren().add(tarjeta);
             }
         }
-        tblProductos.refresh();
     }
 
-    @FXML
-    private void onAgregarClicked(ActionEvent event) {
-        if (camposValidos()) {
-            Producto p = new Producto(
-                txtCodigo.getText().trim(),
-                txtNombre.getText().trim(),
-                cmbTalla.getValue(),
-                txtColor.getText().trim(),
-                Double.parseDouble(txtPrecio.getText().trim()),
-                Integer.parseInt(txtStock.getText().trim()),
-                cmbCategoria.getValue()
-            );
-            listaProductos.add(p);
-            listaFiltrada.add(p);
-            limpiarFormulario();
-        } else {
-            mostrarAlerta("Completa todos los campos correctamente.");
-        }
+    private VBox crearTarjetaProducto(Producto p) {
+        Label nombre = new Label(p.getNombre());
+        nombre.setFont(new Font("Arial", 14));
+
+        Label precio = new Label("$" + p.getPrecio() + " /pc");
+        precio.setStyle("-fx-text-fill: green;");
+
+        ImageView img = new ImageView(new Image("/Imagenes/camiseta1.jpg")); // imagen por defecto
+        img.setFitWidth(100);
+        img.setFitHeight(100);
+
+        Label colores = new Label("Colores disponibles");
+        colores.setStyle("-fx-font-size: 11px;");
+
+        Button btnAgregar = new Button("Agregar al carrito");
+        btnAgregar.setStyle("-fx-background-color: #000000; -fx-text-fill: white;");
+
+        VBox tarjeta = new VBox(5, img, nombre, precio, colores, btnAgregar);
+        tarjeta.setPrefWidth(150);
+        tarjeta.setAlignment(Pos.CENTER);
+        tarjeta.setStyle("-fx-border-color: #cccccc; -fx-border-radius: 8; -fx-padding: 10; -fx-background-radius: 10; -fx-background-color: #f9f9f9;");
+
+        return tarjeta;
     }
 
-    @FXML
-    private void onEditarClicked(ActionEvent event) {
-        Producto seleccionado = tblProductos.getSelectionModel().getSelectedItem();
-        if (seleccionado != null && camposValidos()) {
-            seleccionado.setCodigo(txtCodigo.getText().trim());
-            seleccionado.setNombre(txtNombre.getText().trim());
-            seleccionado.setTalla(cmbTalla.getValue());
-            seleccionado.setColor(txtColor.getText().trim());
-            seleccionado.setPrecio(Double.parseDouble(txtPrecio.getText().trim()));
-            seleccionado.setStock(Integer.parseInt(txtStock.getText().trim()));
-            seleccionado.setCategoria(cmbCategoria.getValue());
-            tblProductos.refresh();
-            limpiarFormulario();
-        } else {
-            mostrarAlerta("Selecciona un producto y completa los campos para editar.");
-        }
+    // Métodos de filtrado
+    @FXML private void filtrarTodos() {
+        cargarProductos("Todos");
     }
 
-    @FXML
-    private void onEliminarClicked(ActionEvent event) {
-        Producto seleccionado = tblProductos.getSelectionModel().getSelectedItem();
-        if (seleccionado != null) {
-            listaProductos.remove(seleccionado);
-            listaFiltrada.remove(seleccionado);
-            limpiarFormulario();
-        } else {
-            mostrarAlerta("Selecciona un producto para eliminar.");
-        }
+    @FXML private void filtrarHombres() {
+        cargarProductos("Hombres");
     }
 
-    private boolean camposValidos() {
-        try {
-            if (txtCodigo.getText().trim().isEmpty()) return false;
-            if (txtNombre.getText().trim().isEmpty()) return false;
-            if (cmbTalla.getValue() == null) return false;
-            if (txtColor.getText().trim().isEmpty()) return false;
-            Double.parseDouble(txtPrecio.getText().trim());
-            Integer.parseInt(txtStock.getText().trim());
-            if (cmbCategoria.getValue() == null || cmbCategoria.getValue().trim().isEmpty()) return false;
-            return true;
-        } catch (NumberFormatException e) {
-            return false;
-        }
+    @FXML private void filtrarMujeres() {
+        cargarProductos("Mujeres");
     }
 
-    private void limpiarFormulario() {
-        txtCodigo.clear();
-        txtNombre.clear();
-        cmbTalla.setValue("M");
-        txtColor.clear();
-        txtPrecio.clear();
-        txtStock.clear();
-        txtBusqueda.clear();
-        cmbCategoria.setValue("Todos");
-        tblProductos.getSelectionModel().clearSelection();
+    @FXML private void filtrarInfantil() {
+        cargarProductos("Infantil");
     }
-
-    private void mostrarAlerta(String mensaje) {
-        Alert alerta = new Alert(Alert.AlertType.WARNING);
-        alerta.setTitle("Atención");
-        alerta.setHeaderText(null);
-        alerta.setContentText(mensaje);
-        alerta.showAndWait();
-    }
-
-    
 }
 

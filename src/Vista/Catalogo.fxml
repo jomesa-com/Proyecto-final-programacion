@@ -1,137 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
-<?import javafx.collections.FXCollections?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.TitledPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
-
-<BorderPane stylesheets="@styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vista.CatalogoController">
+<?import javafx.scene.layout.TilePane?>
 
 
-    <top>
-        <VBox spacing="5">
-            <padding>
-                <Insets bottom="10" left="10" right="10" top="10" />
-            </padding>
-           
-            <HBox alignment="CENTER_LEFT" spacing="10">
-                
-                <Label styleClass="titulo-tienda" text="JueVII" />
-            </HBox>
-            <!-- Barra de búsqueda y filtros -->
-            <HBox alignment="CENTER_LEFT" spacing="10">
-                <TextField fx:id="txtBusqueda" promptText="Buscar por nombre o código..." HBox.hgrow="ALWAYS" />
-                <ComboBox fx:id="cmbCategoria" prefWidth="150" promptText="Categoría">
-                    <items>
-                        <FXCollections fx:factory="observableArrayList">
-                            <String fx:value="Todos" />
-                            <String fx:value="Hombres" />
-                            <String fx:value="Mujeres" />
-                            <String fx:value="Niños" />
-                            <String fx:value="Accesorios" />
-                        </FXCollections>
-                    </items>
-                </ComboBox>
-                <Button fx:id="btnBuscar" onAction="#onBuscarClicked" text="Buscar" />
-            </HBox>
-        </VBox>
-    </top>
-
- 
-    <center>
-        <VBox spacing="10">
-            <padding>
-                <Insets bottom="10" left="10" right="10" top="10" />
-            </padding>
-            <Label styleClass="subtitulo-seccion" text="Productos Disponibles" />
-            <TableView fx:id="tblProductos" prefHeight="400" prefWidth="700" styleClass="tabla-productos">
-                <columns>
-                    <TableColumn fx:id="colCodigo" prefWidth="100" text="Código" />
-                    <TableColumn fx:id="colNombre" prefWidth="200" text="Nombre" />
-                    <TableColumn fx:id="colTalla" prefWidth="80" text="Talla" />
-                    <TableColumn fx:id="colColor" prefWidth="100" text="Color" />
-                    <TableColumn fx:id="colPrecio" prefWidth="100" text="Precio" />
-                    <TableColumn fx:id="colStock" prefWidth="80" text="Stock" />
-                </columns>
-            </TableView>
-        </VBox>
-    </center>
-
-
-    <right>
-        <VBox prefWidth="300" spacing="15" styleClass="panel-derecho">
-            <padding>
-                <Insets bottom="10" left="10" right="10" top="10" />
-            </padding>
-            <TitledPane expanded="true" text="Detalles del Producto">
-                <content>
-                    <VBox spacing="10">
-                        <padding>
-                            <Insets bottom="10" left="10" right="10" top="10" />
-                        </padding>
-                        <GridPane hgap="10" vgap="10">
-                            <columnConstraints>
-                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="100" />
-                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="150" />
-                            </columnConstraints>
-
-                            <Label text="Código:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                            <TextField fx:id="txtCodigo" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-
-                            <Label text="Nombre:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-                            <TextField fx:id="txtNombre" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-
-                            <Label text="Talla:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-                            <ComboBox fx:id="cmbTalla" promptText="Selecciona talla" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                                <items>
-                                    <FXCollections fx:factory="observableArrayList">
-                                        <String fx:value="S" />
-                                        <String fx:value="M" />
-                                        <String fx:value="L" />
-                                        <String fx:value="XL" />
-                                    </FXCollections>
-                                </items>
-                            </ComboBox>
-
-                            <Label text="Color:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
-                            <TextField fx:id="txtColor" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-
-                            <Label text="Precio:" GridPane.columnIndex="0" GridPane.rowIndex="4" />
-                            <TextField fx:id="txtPrecio" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-
-                            <Label text="Stock:" GridPane.columnIndex="0" GridPane.rowIndex="5" />
-                            <TextField fx:id="txtStock" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                     <rowConstraints>
-                        <RowConstraints />
-                        <RowConstraints />
-                        <RowConstraints />
-                        <RowConstraints />
-                        <RowConstraints />
-                        <RowConstraints />
-                     </rowConstraints>
-                        </GridPane>
-
-                        <HBox alignment="CENTER_RIGHT" spacing="10" styleClass="contenedor-botones">
-                            <Button fx:id="btnAgregar" onAction="#onAgregarClicked" styleClass="btn-accion" text="Agregar" />
-                            <Button fx:id="btnEditar" onAction="#onEditarClicked" styleClass="btn-accion" text="Editar" />
-                            <Button fx:id="btnEliminar" onAction="#onEliminarClicked" styleClass="btn-accion-peligro" text="Eliminar" />
-                        </HBox>
-                    </VBox>
-                </content>
-            </TitledPane>
-        </VBox>
-    </right>
-
-</BorderPane>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="464.0" prefWidth="375.0" style="-fx-background-color: #D1D1D1;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vista.CatalogoController">
+   <children>
+      <HBox layoutX="59.0" layoutY="8.0" prefHeight="27.0" prefWidth="235.0">
+         <children>
+            <Button fx:id="btnTodos" mnemonicParsing="false" onAction="#filtrarTodos" style="-fx-cursor: hand;" text="Todos" />
+            <Button fx:id="btnHombres" mnemonicParsing="false" onAction="#filtrarHombres" style="-fx-cursor: hand;" text="Hombres" />
+            <Button fx:id="btnMujeres" mnemonicParsing="false" onAction="#filtrarMujeres" style="-fx-cursor: hand;" text="Mujeres" />
+            <Button fx:id="btnInfantil" mnemonicParsing="false" onAction="#filtrarInfantil" text="Infantil" />
+         </children>
+      </HBox>
+      <ScrollPane fx:id="scrollCatalogo" fitToWidth="true" layoutX="43.0" layoutY="42.0" prefHeight="422.0" prefViewportHeight="530.0" prefViewportWidth="770.0" prefWidth="289.0" AnchorPane.bottomAnchor="0.39999999999997726" AnchorPane.leftAnchor="43.0" AnchorPane.rightAnchor="43.39999999999998" AnchorPane.topAnchor="42.0">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="438.0" prefWidth="274.0">
+               <children>
+                  <TilePane fx:id="contenedorProductos" hgap="15.0" layoutX="-4.0" prefHeight="470.0" prefWidth="294.0" vgap="15.0">
+                     <padding>
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                     </padding>
+                  </TilePane>
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>

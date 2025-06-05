@@ -11,7 +11,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" centerShape="false" prefHeight="694.0" prefWidth="384.0" style="-fx-background-color: #F1F1F1;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vista.ControladorLogin">
+<AnchorPane id="AnchorPane" centerShape="false" prefHeight="694.0" prefWidth="384.0" style="-fx-background-color: #D1D1D1;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vista.ControladorLogin">
    <children>
       <ImageView fitHeight="256.0" fitWidth="385.0" pickOnBounds="true" preserveRatio="true">
          <image>

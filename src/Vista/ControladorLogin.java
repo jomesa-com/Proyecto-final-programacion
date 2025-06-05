@@ -44,40 +44,49 @@ public class ControladorLogin implements Initializable {
     
     
     @FXML
-     public void handleIniciar(ActionEvent event) {
-        String correo = txtCorreo.getText().trim();
-        String clave = txtContraseña.getText().trim();
+private void handleIniciar(ActionEvent event) {
+    String correo = txtCorreo.getText().trim();
+    String clave = txtContraseña.getText().trim();
 
-        // Validar campos vacíos
-        if (correo.isEmpty() || clave.isEmpty()) {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Campos incompletos");
-            alert.setHeaderText(null);
-            alert.setContentText("Por favor, completa todos los campos.");
-            alert.showAndWait();
-            return;
-        }
-
-        // Verificar usuario en la lista global
-        Usuario u = LoginApp.listaUsuarios.login(correo, clave);
-
-        if (u != null) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Acceso permitido");
-            alert.setHeaderText(null);
-            alert.setContentText("¡Bienvenido, " + u.nombre + "!");
-            alert.showAndWait();
-
-            // TODO: abrir menú principal (por ahora solo notifica)
-
-        } else {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error de acceso");
-            alert.setHeaderText(null);
-            alert.setContentText("Correo o contraseña incorrectos.");
-            alert.showAndWait();
-        }
+    if (correo.isEmpty() || clave.isEmpty()) {
+        mostrarAlerta("Campos incompletos", "Por favor, completa todos los campos.", Alert.AlertType.WARNING);
+        return;
     }
+
+    Usuario u = LoginApp.listaUsuarios.login(correo, clave);
+
+    if (u != null) {
+        mostrarAlerta("Bienvenido", "Inicio de sesión exitoso.", Alert.AlertType.INFORMATION);
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Catalogo.fxml"));
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Catálogo de Productos");
+            stage.setScene(new Scene(root));
+            stage.show();
+
+            // Cerrar ventana actual
+            Stage actual = (Stage) btnIniciar.getScene().getWindow();
+            actual.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    } else {
+        mostrarAlerta("Acceso denegado", "Correo o contraseña incorrectos.", Alert.AlertType.ERROR);
+    }
+}
+
+private void mostrarAlerta(String titulo, String mensaje, Alert.AlertType tipo) {
+    Alert alert = new Alert(tipo);
+    alert.setTitle(titulo);
+    alert.setHeaderText(null);
+    alert.setContentText(mensaje);
+    alert.showAndWait();
+}
+
      
      @FXML
 private void handleIrARegistro() {
