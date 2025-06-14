@@ -53,7 +53,7 @@ public class CatalogoController implements Initializable {
         Label precio = new Label("$" + p.getPrecio() + " /pc");
         precio.setStyle("-fx-text-fill: green;");
 
-        ImageView img = new ImageView(new Image("/Imagenes/camiseta1.jpg")); // imagen por defecto
+        ImageView img = new ImageView(new Image(p.getRutaImagen())); 
         img.setFitWidth(100);
         img.setFitHeight(100);
 

@@ -12,9 +12,9 @@ public class ListaCatalogo {
     private static final ObservableList<Producto> listaProductos = FXCollections.observableArrayList();
 
     static {
-        // Puedes cargar algunos productos de ejemplo al inicio
-        listaProductos.add(new Producto("P001", "Camiseta Futbol", "M", "Azul", 79_900, 10, "Pantalón"));
-        listaProductos.add(new Producto("C001", "Camiseta Blanca", "L", "Blanco", 29_900, 20, "Camiseta"));
+        
+        listaProductos.add(new Producto("P001", "Camiseta Futbol", "M", "Azul", 79_900, 10, "Hombres", "/Imagenes/camiseta1.jpg"));
+        listaProductos.add(new Producto("C001", "Pantalón Azul", "L", "Blanco", 29_900, 20, "Mujeres", "/Imagenes/pantalon1.jpg"));
     }
 
     public static ObservableList<Producto> getProductos() {

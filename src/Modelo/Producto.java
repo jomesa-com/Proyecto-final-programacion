@@ -17,8 +17,9 @@ public class Producto {
     private final DoubleProperty precio;
     private final IntegerProperty stock;
     private final StringProperty categoria;
+    private final StringProperty rutaImagen;
 
-    public Producto(String codigo, String nombre, String talla, String color, double precio, int stock, String categoria) {
+    public Producto(String codigo, String nombre, String talla, String color, double precio, int stock, String categoria, String rutaImagen) {
         this.codigo = new SimpleStringProperty(codigo);
         this.nombre = new SimpleStringProperty(nombre);
         this.talla = new SimpleStringProperty(talla);
@@ -26,15 +27,17 @@ public class Producto {
         this.precio = new SimpleDoubleProperty(precio);
         this.stock = new SimpleIntegerProperty(stock);
         this.categoria = new SimpleStringProperty(categoria);
+        this.rutaImagen = new SimpleStringProperty(rutaImagen);
     }
     
-     public StringProperty codigoProperty() { return codigo; }
+    public StringProperty codigoProperty() { return codigo; }
     public StringProperty nombreProperty() { return nombre; }
     public StringProperty tallaProperty() { return talla; }
     public StringProperty colorProperty() { return color; }
     public DoubleProperty precioProperty() { return precio; }
     public IntegerProperty stockProperty() { return stock; }
     public StringProperty categoriaProperty() { return categoria; }
+    public StringProperty rutaImagenProperty(){ return rutaImagen;}
 
     public String getCodigo() { return codigo.get(); }
     public void setCodigo(String v) { codigo.set(v); }
@@ -56,5 +59,8 @@ public class Producto {
 
     public String getCategoria() { return categoria.get(); }
     public void setCategoria(String v) { categoria.set(v); }
+    
+    public String getRutaImagen() { return rutaImagen.get();}
+    public void setRutaImagen(String v) {  rutaImagen.set(v);}
     
 }

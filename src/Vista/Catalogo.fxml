@@ -2,27 +2,33 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="464.0" prefWidth="375.0" style="-fx-background-color: #D1D1D1;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vista.CatalogoController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="556.0" prefWidth="375.0" style="-fx-background-color: #D1D1D1;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vista.CatalogoController">
    <children>
-      <HBox layoutX="59.0" layoutY="8.0" prefHeight="27.0" prefWidth="235.0">
+      <Pane layoutX="14.0" layoutY="53.0" prefHeight="50.0" prefWidth="347.0" style="-fx-background-color: #aaaaaa; -fx-border-radius: 8; -fx-background-radius: 8;">
          <children>
-            <Button fx:id="btnTodos" mnemonicParsing="false" onAction="#filtrarTodos" style="-fx-cursor: hand;" text="Todos" />
-            <Button fx:id="btnHombres" mnemonicParsing="false" onAction="#filtrarHombres" style="-fx-cursor: hand;" text="Hombres" />
-            <Button fx:id="btnMujeres" mnemonicParsing="false" onAction="#filtrarMujeres" style="-fx-cursor: hand;" text="Mujeres" />
-            <Button fx:id="btnInfantil" mnemonicParsing="false" onAction="#filtrarInfantil" text="Infantil" />
-         </children>
-      </HBox>
-      <ScrollPane fx:id="scrollCatalogo" fitToWidth="true" layoutX="43.0" layoutY="42.0" prefHeight="422.0" prefViewportHeight="530.0" prefViewportWidth="770.0" prefWidth="289.0" AnchorPane.bottomAnchor="0.39999999999997726" AnchorPane.leftAnchor="43.0" AnchorPane.rightAnchor="43.39999999999998" AnchorPane.topAnchor="42.0">
-        <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="438.0" prefWidth="274.0">
+            <HBox layoutX="60.0" layoutY="12.0" prefHeight="27.0" prefWidth="227.0">
                <children>
-                  <TilePane fx:id="contenedorProductos" hgap="15.0" layoutX="-4.0" prefHeight="470.0" prefWidth="294.0" vgap="15.0">
+                  <Button fx:id="btnTodos" mnemonicParsing="false" onAction="#filtrarTodos" style="-fx-cursor: hand;" text="Todos" />
+                  <Button fx:id="btnHombres" mnemonicParsing="false" onAction="#filtrarHombres" style="-fx-cursor: hand;" text="Hombres" />
+                  <Button fx:id="btnMujeres" mnemonicParsing="false" onAction="#filtrarMujeres" style="-fx-cursor: hand;" text="Mujeres" />
+                  <Button fx:id="btnInfantil" mnemonicParsing="false" onAction="#filtrarInfantil" text="Infantil" />
+               </children>
+            </HBox>
+         </children>
+      </Pane>
+      <ScrollPane fx:id="scrollCatalogo" fitToWidth="true" layoutX="43.0" layoutY="116.0" prefHeight="426.0" prefViewportHeight="530.0" prefViewportWidth="770.0" prefWidth="289.0" AnchorPane.bottomAnchor="14.399999999999977" AnchorPane.leftAnchor="43.0" AnchorPane.rightAnchor="43.39999999999998" AnchorPane.topAnchor="116.0">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="438.0" prefWidth="287.0">
+               <children>
+                  <TilePane fx:id="contenedorProductos" hgap="15.0" layoutX="-11.0" prefHeight="426.0" prefWidth="294.0" vgap="15.0">
                      <padding>
                         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                      </padding>
@@ -31,5 +37,15 @@
             </AnchorPane>
         </content>
       </ScrollPane>
+      <Label layoutX="23.0" layoutY="5.0" prefHeight="18.0" prefWidth="65.0" text="Nuestros">
+         <font>
+            <Font name="SansSerif Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="23.0" layoutY="23.0" text="Productos">
+         <font>
+            <Font name="SansSerif Bold" size="14.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
