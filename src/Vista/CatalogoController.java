@@ -4,8 +4,7 @@
  */
 package Vista;
 
-import Modelo.Producto;
-import Modelo.ListaCatalogo;
+import Modelo.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -19,6 +18,7 @@ import javafx.scene.text.Font;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ScrollPane;
 
 public class CatalogoController implements Initializable {
@@ -30,11 +30,14 @@ public class CatalogoController implements Initializable {
     @FXML private Button btnInfantil;
     @FXML private ScrollPane scrollCatalogo;
     
-
+public static ListaCarrito carrito = new ListaCarrito();
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         cargarProductos("Todos");
     }
+    
+    
+
 
     private void cargarProductos(String filtroCategoria) {
         contenedorProductos.getChildren().clear();
@@ -61,7 +64,9 @@ public class CatalogoController implements Initializable {
         colores.setStyle("-fx-font-size: 11px;");
 
         Button btnAgregar = new Button("Agregar al carrito");
-        btnAgregar.setStyle("-fx-background-color: #000000; -fx-text-fill: white;");
+        btnAgregar.setStyle("-fx-background-color: #000000; -fx-text-fill: white; -fx-cursor: hand;");
+        btnAgregar.setOnAction(e -> agregarAlCarrito(p));
+
 
         VBox tarjeta = new VBox(5, img, nombre, precio, colores, btnAgregar);
         tarjeta.setPrefWidth(150);
@@ -87,5 +92,15 @@ public class CatalogoController implements Initializable {
     @FXML private void filtrarInfantil() {
         cargarProductos("Infantil");
     }
+    
+    private void agregarAlCarrito(Producto p) {
+    carrito.Insertar(p);
+
+    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+    alert.setTitle("Carrito");
+    alert.setHeaderText(null);
+    alert.setContentText(p.getNombre() + " fue agregado al carrito.");
+    alert.showAndWait();
+}
 }
 

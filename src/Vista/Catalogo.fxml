@@ -24,19 +24,6 @@
             </HBox>
          </children>
       </Pane>
-      <ScrollPane fx:id="scrollCatalogo" fitToWidth="true" layoutX="43.0" layoutY="116.0" prefHeight="426.0" prefViewportHeight="530.0" prefViewportWidth="770.0" prefWidth="289.0" AnchorPane.bottomAnchor="14.399999999999977" AnchorPane.leftAnchor="43.0" AnchorPane.rightAnchor="43.39999999999998" AnchorPane.topAnchor="116.0">
-        <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="438.0" prefWidth="287.0">
-               <children>
-                  <TilePane fx:id="contenedorProductos" hgap="15.0" layoutX="-11.0" prefHeight="426.0" prefWidth="294.0" vgap="15.0">
-                     <padding>
-                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-                     </padding>
-                  </TilePane>
-               </children>
-            </AnchorPane>
-        </content>
-      </ScrollPane>
       <Label layoutX="23.0" layoutY="5.0" prefHeight="18.0" prefWidth="65.0" text="Nuestros">
          <font>
             <Font name="SansSerif Bold" size="14.0" />
@@ -47,5 +34,18 @@
             <Font name="SansSerif Bold" size="14.0" />
          </font>
       </Label>
+      <ScrollPane fx:id="scrollCatalogo" fitToWidth="true" layoutX="15.2" layoutY="110.4" prefHeight="438.0" prefViewportHeight="530.0" prefViewportWidth="770.0" prefWidth="357.0" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="110.0">
+        <content>
+          <AnchorPane maxHeight="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="700.0" prefWidth="342.0">
+               <children>
+                  <TilePane fx:id="contenedorProductos" hgap="15.0" layoutX="7.2" layoutY="1.0" prefHeight="698.0" prefWidth="330.0" vgap="15.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="1.0">
+                     <padding>
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                     </padding>
+                  </TilePane>
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
    </children>
 </AnchorPane>

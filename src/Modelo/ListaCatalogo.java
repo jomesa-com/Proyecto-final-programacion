@@ -15,8 +15,11 @@ public class ListaCatalogo {
         
         listaProductos.add(new Producto("P001", "Camiseta Futbol", "M", "Azul", 79_900, 10, "Hombres", "/Imagenes/camiseta1.jpg"));
         listaProductos.add(new Producto("C001", "Pantalón Azul", "L", "Blanco", 29_900, 20, "Mujeres", "/Imagenes/pantalon1.jpg"));
+        listaProductos.add(new Producto("P002", "Camiseta Oversize", "L", "Negro", 59_900, 15, "Hombres", "/Imagenes/camiseta2.jpg"));
+        listaProductos.add(new Producto("P012", "Bermuda Sport", "M", "Azul Marino", 79_900, 20, "Infantil", "/Imagenes/bermuda1.jpg"));
+        listaProductos.add(new Producto("P013", "Chaqueta Corta", "S", "Verde Oliva Claro", 139_900, 9, "Mujeres", "/Imagenes/chaqueta1.jpg"));
     }
-
+    
     public static ObservableList<Producto> getProductos() {
         return listaProductos;
     }
