@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/8.0.171"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="Vista.HistoryController"
+      spacing="10">
+    
+    <padding>
+        <javafx.geometry.Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+
+    <Label text="Historial de Compras" style="-fx-font-size:18;" />
+    
+    <TableView fx:id="tableHistory">
+        <columns>
+            <TableColumn text="Fecha" fx:id="colFecha" />
+            <TableColumn text="Total" fx:id="colTotal" />
+        </columns>
+    </TableView>
+
+    <Button text="Ver Detalle" onAction="#verDetalle" />
+</VBox>

@@ -4,6 +4,9 @@
  */
 package Modelo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author jomes
@@ -37,7 +40,7 @@ public class ListaCarrito {
         cab = null;
     }
      
-     public double calcularTotal(){
+     public double getTotal(){
          double total=0;
          nodoCarrito p=cab;
          while(p!=null){
@@ -50,4 +53,15 @@ public class ListaCarrito {
      public nodoCarrito getCabecera(){
          return cab;
      }
+     
+     
+    public List<Producto> getProductos() {
+        List<Producto> lista = new ArrayList<>();
+        nodoCarrito p = cab;
+        while (p != null) {
+            lista.add(p.producto);
+            p = p.sig;
+        }
+        return lista;
+    }
 }

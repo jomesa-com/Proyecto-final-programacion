@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/8.0.171"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="Vista.PaymentController"
+      spacing="10">
+    <padding>
+        <javafx.geometry.Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <Label text="Confirmar Pago" style="-fx-font-size:18;" />
+    <Label text="Total a pagar:" />
+    <Label fx:id="lblTotalPago" style="-fx-font-weight:bold;" />
+    <TextField fx:id="tfTarjeta" promptText="Número de tarjeta" />
+    <TextField fx:id="tfFecha" promptText="MM/AA" />
+    <TextField fx:id="tfCvv" promptText="CVV" />
+    <HBox spacing="10">
+        <Button text="Confirmar" onAction="#confirmarPago" />
+        <Button text="Cancelar" onAction="#cancelar" />
+    </HBox>
+</VBox>
