@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8.0.171"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="Vista.CartController">
+
+    <top>
+        <HBox alignment="TOP_LEFT">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <Button onAction="#volverAlCatalogo" text="← Volver" style="-fx-background-color: transparent;" />
+        </HBox>
+    </top>
+
+    <center>
+        <TableView fx:id="tableCart">
+            <columns>
+                <TableColumn text="Producto" fx:id="colNombre" />
+                <TableColumn text="Precio" fx:id="colPrecio" />
+            </columns>
+        </TableView>
+    </center>
+
+    <bottom>
+        <HBox spacing="10" alignment="CENTER_RIGHT">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <Label text="Total:" />
+            <Label fx:id="lblTotalCarrito"/>
+            <Button text="Pagar" onAction="#irAPago" />
+        </HBox>
+    </bottom>
+
+</BorderPane>
