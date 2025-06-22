@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.TilePane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0"
+            xmlns:fx="http://javafx.com/fxml/1"
+            xmlns="http://javafx.com/javafx"
+            fx:controller="Vista.WishListController">
+
+    <children>
+        <!-- Botón para regresar al catálogo -->
+        <Button text="Volver al Catálogo"
+                layoutX="10.0" layoutY="10.0"
+                prefWidth="140.0" prefHeight="30.0"
+                onAction="#volverACatalogo"
+                style="-fx-background-color: #444; -fx-text-fill: white;" />
+
+        <!-- Contenedor de productos de la lista de deseos -->
+        <TilePane fx:id="contenedorDeseos"
+                  layoutX="10.0" layoutY="50.0"
+                  prefWidth="580.0" prefHeight="340.0"
+                  hgap="10" vgap="10"
+                  prefColumns="3" />
+    </children>
+
+</AnchorPane>
+
