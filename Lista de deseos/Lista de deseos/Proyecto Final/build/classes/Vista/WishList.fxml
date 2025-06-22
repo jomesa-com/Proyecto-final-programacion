@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.TilePane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0"
+            xmlns:fx="http://javafx.com/fxml/1"
+            xmlns="http://javafx.com/javafx"
+            fx:controller="Vista.WishListController">
+
+    <children>
+        <TilePane fx:id="contenedorDeseos"
+                  layoutX="10.0" layoutY="10.0"
+                  prefWidth="580.0" prefHeight="380.0"
+                  hgap="10" vgap="10"
+                  prefColumns="3"
+                  style="-fx-padding: 10; -fx-background-color: #ffffff;" />
+    </children>
+
+</AnchorPane>
+
